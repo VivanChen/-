@@ -1,0 +1,77 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/dialogStyle.css">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/questionDialog.js"></script>
+</head>
+<body>
+	<div id="example">
+		<button id="open-dialog">open dialog</button>
+		<div id="answer"></div>
+		<hr />
+		<button id="open-dialog2">open forced dialog</button>
+		<div id="answer2"></div>
+		<hr />
+		<button id="open-dialog3">show message</button>
+		<div id="answer3"></div>
+	</div>
+
+	<script type="text/javascript">
+		/**
+		 * Dialog without forced choise
+		 */
+		$('#open-dialog').click(function() {
+			var header = 'Dialog';
+			var message = 'If you close it we will choose for you';
+			var options = { 
+				overlay: 'Maybe',
+				buttons: {
+					'Yes': 'save',
+					'No': 'alert',
+					'Maybe': ''
+				}
+			};
+			
+			$.showQuestionDialog(header, message, options, function(reaction) {
+				$('#answer').text(reaction);
+			});
+		});
+
+		/**
+		 * Dialog with forced choise 
+		 */
+		$('#open-dialog2').click(function() {
+			var header = 'Forced dialog';
+			var message = 'You have to choose one of the options!';
+			var options = { 
+				// overlay: 'Maybe',  --- By removing the overlay the user will be forced to choose an option
+				buttons: {
+					'Yes': 'save',
+					'No': 'alert'
+				}
+			};
+			
+			$.showQuestionDialog(header, message, options, function(reaction) {
+				$('#answer2').text(reaction);
+			});
+		});
+
+		/**
+		 * Display notice 
+		 */
+		$('#open-dialog3').click(function() {
+			var header = 'This is a message';
+			var message = 'Content of message';
+			var options = { 
+				overlay: 'Ok',  // In this case the value will be equals to the button value
+				buttons: {
+					'Ok': 'save'
+				}
+			};
+			
+			$.showQuestionDialog(header, message, options, function(reaction) {
+				$('#answer3').text(reaction);
+			});
+		});
+	</script>
+</body>

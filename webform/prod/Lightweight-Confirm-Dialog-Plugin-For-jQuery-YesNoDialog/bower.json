@@ -1,0 +1,14 @@
+{
+  "name": "YesNoDialog",
+  "version": "1.3.0",
+  "homepage": "https://github.com/stein189/YesNoDialog",
+  "authors": [
+    "stein <birdmage@gmail.com>"
+  ],
+  "description": "A dynamic jQuery yes no dialog",
+  "keywords": [
+    "dialog",
+    "dynamic"
+  ],
+  "license": "MIT"
+}

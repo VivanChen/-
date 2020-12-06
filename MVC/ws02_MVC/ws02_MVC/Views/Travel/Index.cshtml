@@ -1,0 +1,85 @@
+﻿@model ws02_MVC.Models.Travel
+
+@{
+    ViewBag.Title = "活動首頁";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    @*<h2>本月活動資訊</h2>*@
+    <h4>台灣花蓮｜清水斷崖 SUP 立槳體驗</h4>
+    <div class="container">
+
+        <div id="carousel1" class="carousel slide" data-interval="2000"
+             data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="~/image/Picture1.jpg">
+                    <div class="carousel-caption d-none d-md-block text-light">
+                        @*<h5>Cat 1</h5>*@
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/image/Picture2.jpg">
+                    <div class="carousel-caption d-none d-md-block text-light">
+                        @*<h5>Cat 1</h5>*@
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <img class="d-block w-100" src="~/image/Picture3.jpg">
+                    <div class="carousel-caption d-none d-md-block text-light">
+                        @*<h5>Cat 1</h5>*@
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <img class="d-block w-100" src="~/image/Picture8.jpg">
+                    <div class="carousel-caption d-none d-md-block text-light">
+                        @*<h5>Cat 1</h5>*@
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <img class="d-block w-100" src="~/image/Picture9.jpg">
+                    <div class="carousel-caption d-none d-md-block text-light">
+                        @*<h5>Cat 1</h5>*@
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carousel1" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#carousel1" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+            <ol class="carousel-indicators">
+                <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel1" data-slide-to="1"></li>
+                <li data-target="#carousel1" data-slide-to="2"></li>
+                <li data-target="#carousel1" data-slide-to="3"></li>
+                <li data-target="#carousel1" data-slide-to="4"></li>
+            </ol>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">活動日期:08月10日</h4>
+        </div>
+        <div class="card-body">
+            <h5 >【行程介紹】</h5>
+            <p>
+                太平洋曙光團
+                因活動集合時間早​，故前晚務必要提早休息，避免在海上昏昏沉沉錯過了天剛破曉海上迎日出的最美時刻，能在日出照耀下拍出各種生氣蓬勃的照片將是此行最大收穫，雖天氣因素無法保證一定看得到日出，但仍可以看海岸線綿延不絕的壯麗風景。
+            </p>
+            <p>
+                ​視覺饗宴上午團
+                雖然這個時段的太陽高高掛，但也因為這樣光影，清水斷崖才能完全的壯觀呈現在眼前，海水也在陽光照耀下呈現夢幻的湛藍，絕對不可錯過的好時段。
+            </p>
+            <p>
+                ​​​清爽下午團
+                花蓮海岸的特性就是中午過後太陽就會被高聳的斷崖遮擋且易有雲霧聚集，所以出海時通常會稍微涼快一點，不過拍出的照片可能也因此較為陰暗。
+            </p>
+        </div>
+    </div>  
+   
+    @Html.ActionLink("報名", "Create", null, new { @class = "btn btn-danger " })
+</div>

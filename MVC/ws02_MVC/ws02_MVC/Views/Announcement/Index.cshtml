@@ -1,0 +1,139 @@
+﻿@model IEnumerable<ws02_MVC.Models.Announcement>
+@*@model ws02_MVC.Models.Announcement*@
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section styles{
+
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+}
+
+@*<div>
+        <ul>
+            <li>@Html.DisplayNameFor(m=>m.AnnouncementID)</li>
+            <li>@Html.DisplayNameFor(m=>m.AnntTitle)</li>
+            <li>@Html.DisplayNameFor(m=>m.AnntName)</li>
+            <li>@Html.DisplayNameFor(m=>m.AnntContent)</li>
+            <li>@Html.DisplayNameFor(m=>m.AnntDay)</li>
+
+        </ul>
+
+    </div>*@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">公告清單</h1>
+
+    <div class="row">
+
+        @*<div class="col-lg-4">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">新增廠商</h6>
+                    </div>
+                    <div class="card-body">
+
+
+
+                        <hr />
+
+                        <span id="info"></span>
+                        <hr />
+
+                    </div>
+
+                </div>
+            </div>*@
+        <!--廠商名單-->
+        <div class="col-lg-12">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">公告清單</h6>
+                    <input type="hidden" id="hiddenuserid" value="@Session["useremployeeid"].ToString().Substring(1)"/>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <div>
+                            @if (Convert.ToInt32(Session["useremployeeid"].ToString().Substring(1)) == 1)
+                            {
+                                @Html.ActionLink("新增公告", "Create", "Announcement", new { @id = "newannt", @class = "btn btn-info" })
+                            }
+
+
+                        </div>
+
+                        <table class="table table-bordered" id="dataTable" style="width: 100%;" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(A => A.AnnouncementID)</th>
+                                    <th>@Html.DisplayNameFor(A => A.AnntTitle)</th>
+                                    @*<th>@Html.DisplayNameFor(A => A.AnntContent)</th>*@
+                                    @*<th>@Html.DisplayNameFor(A => A.AnntName)</th>*@
+                                    <th>@Html.DisplayNameFor(A => A.AnntDay)</th>
+                                    <th>功能</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTableBody">
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(A => item.AnnouncementID)</td>
+                                        <td>@Html.DisplayFor(A => item.AnntTitle)</td>
+                                        @*<td>@Html.DisplayFor(A => item.AnntContent)</td>*@
+                                        @*<td>@Html.DisplayFor(A => item.AnntName)</td>*@
+                                        <td>@Html.DisplayFor(A => item.AnntDay)</td>
+                                        <td>
+
+                                            @if (Convert.ToInt32(Session["useremployeeid"].ToString().Substring(1)) == 1)
+                                            {
+                                                @Html.ActionLink("詳細", "Details", new { id = item.AnnouncementID }, new { @id = "Details", @class = "btn btn-primary" })
+                                                @Html.ActionLink("修改", "Edit", new { id = item.AnnouncementID }, new { @id = "Edit", @class = "btn btn-info" })
+                                                @Html.ActionLink("刪除", "Delete", new { id = item.AnnouncementID }, new { onclick = $"return confirm('delete {item.AnnouncementID}?')", @id = "Deletes", @class = "btn btn-danger" })
+                                            }
+                                            else
+                                            {
+                                                @Html.ActionLink("詳細", "Details", new { id = item.AnnouncementID }, new { @id = "Details", @class = "btn btn-primary" })
+                                            }
+
+                                            @*@Html.ActionLink("Delete2", "Delete", new { id = item.OperaID }, new { onclick = $"return confirm('delete {item.Title}?')" })*@
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+@section scripts{
+    <script src="~/Content/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script>
+        $(function () {
+
+            $('#dataTable').DataTable();
+            //alert($("#hiddencount").val());
+            //if ($("#hiddenuserid").val() == 1) {
+
+            //    //$("#Edit").css("display", "");
+            //    //$("#Deletes").css("display", "");
+            //    //$("#newannt").css("display", "");
+
+            //}
+        });
+    </script>
+
+}

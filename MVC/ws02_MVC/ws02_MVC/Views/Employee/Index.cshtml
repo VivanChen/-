@@ -1,0 +1,80 @@
+﻿@*@model ws02_MVC.Models.Employee*@
+@model IEnumerable<ws02_MVC.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>搜尋員工資訊</h2>
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <form action="index" method="post">
+                        <div class="form-inline mr-auto w-100 navbar-search">
+                            <div class="input-group">
+                                <input id="txt1" type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="searchString">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fas fa-search fa-sm"></i>
+                                    </button>&nbsp;
+                                    <input id="demo" type="button" value="DEMO" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <form action="index" method="post">
+                        <ul>
+                            @if (Model != null)
+                            {
+
+
+                                foreach (var item in Model)
+                                {
+
+                                    <li>
+                                        @Html.DisplayNameFor(m => m.Name):
+                                        @Html.DisplayFor(m => item.Name)
+                                    </li>
+                                    <li>
+                                        @Html.DisplayNameFor(m => m.DepartmentName):
+                                        @Html.DisplayFor(m => item.DepartmentName)
+                                    </li>
+                                    <li>
+                                        @Html.DisplayNameFor(m => m.EmployeeID):
+                                        @Html.DisplayFor(m => item.EmployeeID)
+                                    </li>
+                                    <li>
+                                        @Html.DisplayNameFor(m => m.Phone):
+                                        @Html.DisplayFor(m => item.Phone)
+                                    </li>
+                                    <li>
+                                        @Html.DisplayNameFor(m => m.Email):
+                                        @Html.DisplayFor(m => item.Email)
+                                    </li>
+
+                                }
+                            }
+                        </ul>                       
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section scripts{
+<script>
+    $(function () {
+        $("#demo").click(function () {
+            $("#txt1").val("蔡沛芸");
+        })
+    })
+</script>
+}
+
+
+

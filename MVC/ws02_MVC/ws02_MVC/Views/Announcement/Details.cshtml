@@ -1,0 +1,76 @@
+﻿@model ws02_MVC.Models.Announcement
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">新增公告</h1>
+
+    <!-- Page Heading -->
+
+    <div class="row">
+
+
+        <div class="col-lg-12">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">公告內容</h6>
+                </div>
+                <div class="card-body">
+
+                    <div>
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.AnntTitle)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.AnntTitle)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.AnntContent)
+                            </dt>
+
+                            <dd>
+                                @*@Html.DisplayFor(model => model.AnntContent)*@
+                                @Html.TextAreaFor(model => model.AnntContent, new { @class = "form-control", cols = 100, rows = 10, @readonly = "true", @style = "background-color:white;border:0px;height:400px;" })
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.AnntName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.AnntName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.AnntDay)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.AnntDay)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <hr />
+                    @*@Html.ActionLink("修改", "Edit", new { id = Model.AnnouncementID }, new { @class = "btn btn-success" }) |*@
+                    @Html.ActionLink("返回", "Index", "Announcement", new { @class = "btn btn-info" })
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+<p>
+
+</p>

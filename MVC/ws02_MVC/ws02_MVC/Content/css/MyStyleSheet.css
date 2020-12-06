@@ -1,0 +1,35 @@
+﻿.table-bordered {
+    border: 1px solid #e3e6f0;
+}
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid #e3e6f0;
+    }
+
+    .table-bordered thead th,
+    .table-bordered thead td {
+        border-bottom-width: 2px;
+    }
+.table-bordered tr:hover{
+    background-color:rgba(156, 211, 250, 0.84);
+}
+#myContent_textboxnumber {
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+}
+#myContent_textboxnumber {
+    padding: 6px 12px;
+}
+.handle-counter #myContent_textboxnumber {
+    width: 50px;
+    border-width: 1px;
+    border-left: none;
+    border-right: none;
+}
+.handle-counter .counter-minus, .handle-counter .counter-plus, .handle-counter #myContent_textboxnumber {
+    float: left;
+    text-align: center;
+}

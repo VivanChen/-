@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Histogram";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>年度採購統整</h2>
+
+<div class="container">
+    <div class="container-fluid">
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4 ">
+            <div class="card-header py-2 form-inline ">
+                <a href="#" class="btn btn-success">
+                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                </a>
+                &nbsp;<h3 class="m-0 font-weight-bold text-primary">年度採購統整</h3>
+            </div>
+
+            <div class="card-body">
+                @*上方必填欄位 開始*@
+                <form action="@Url.Action("Histogram")" method="post">
+                    <div>
+                        <div>
+                            <div class="form-inline">
+                                <h4 class="m-0 font-weight-bold text-primary col-5">年度採購統整</h4>
+
+                            </div>
+                            <br />
+                            @* 必填欄位 *@
+
+                        </div>
+                        @*<div>
+                            <div class="col-6">
+                                選擇年份:
+                                <div class="form-inline">
+                                    @Html.DropDownList("dropYear", (IEnumerable<SelectListItem>)ViewBag.yearList1, new { @class = "form-control form-control" })&nbsp;
+                                   
+                                    <span style="color:red"></span>
+                                    <span style="color:red">@ViewBag.Message</span>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                選擇月份:
+                                <div class="form-inline">
+                                    @Html.DropDownList("dropMonth", (IEnumerable<SelectListItem>)ViewBag.droplist2, new { @class = "form-control" })&nbsp;
+                    
+                                    <span style="color:red"></span>
+                                </div>
+                            </div>
+                            <br />
+                            <label class="col-2">
+                                <a id="submit" class="btn btn-primary btn-icon-split" name="action" value="submityear">
+                                    <span class="icon text-white-50">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                    <input type="submit" class="btn btn-primary btn-icon-split" value="查詢年份" />
+                                </a>
+                            </label>
+                            <label class="col-2">
+                                <a id="submit" class="btn btn-primary btn-icon-split" name="action" value="submitmonth">
+                                    <span class="icon text-white-50">
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                    <input type="submit" class="btn btn-primary btn-icon-split" value="查詢年份及月份" />
+                                </a>
+                            </label>
+                            <br />*@
+                            @* 圖的位置 *@
+                            <div class="form-group row">
+                                <div style="width: 50%;" class=" col-md-6">
+                                    <canvas id="myChart" width="1000" height="1000"></canvas>
+                                </div>
+                            </div>
+                            <hr />
+
+                        </div>
+                    </div>
+                </form>    
+                    @*取消返回按鈕*@
+                <label class="col-2">
+                    <a href="~/TheProject//index" id="backbutton" class="btn btn-secondary btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-right"></i>
+                        </span>
+                        <span class="text">回首頁</span>
+                    </a>
+                </label>
+            </div>
+
+
+            @section scripts{
+                @* 引用input tag js *@
+                <script src="~/Content/Tag-Input-With-Autocomplete-jQuery-Tagator/fm.tagator.jquery.js"></script>
+                @* 引用圖表 *@
+                <script src="~/Content/CHART/Chart.js"></script>
+                <script src="~/Content/CHART/utils.js"></script>
+                <script>
+
+                        var ctx = document.getElementById("myChart");
+                        var name = "@Html.Raw(ViewData["vendor"])";
+                    var performance = "@Html.Raw(ViewData["Total"])";
+                    var texttitle = "@Html.ViewData["titletotal"]";
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: name.split(','),
+                                datasets: [{
+                                    data: performance.split(","),
+                                    backgroundColor: GetColors(12),
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                title: {
+                                    display: true,
+                                    fontSize: 26,
+                                    text: texttitle,
+
+                                }
+                            }
+
+                        });
+
+
+
+                </script>
+                <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+                <script src="~/Scripts/jquery.validate.min.js"></script>
+                <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+﻿@model ws02_MVC.Models.Announcement
+
+@{
+    ViewBag.Title = "新增公告";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <h1 class="h3 mb-4 text-gray-800">新增公告</h1>
+
+    <!-- Page Heading -->
+
+    <div class="row">
+
+        @*<div class="col-lg-4">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">新增廠商</h6>
+                    </div>
+                    <div class="card-body">
+
+
+
+                        <hr />
+
+                        <span id="info"></span>
+                        <hr />
+
+                    </div>
+
+                </div>
+            </div>*@
+        <!--廠商名單-->
+        <div class="col-lg-12">
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">新增公告&nbsp;<input type="button" id="demonewannouncement" class="btn btn-sm btn-info" value="Demo" /></h6>
+                </div>
+                <div class="card-body">
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AnntTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.AnntTitle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AnntTitle, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AnntContent, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.AnntContent, new { @class = "form-control", cols = 60, rows = 10, @style = "height:400px;" })
+                                    @Html.ValidationMessageFor(model => model.AnntContent, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AnntName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @*@Html.EditorFor(model => model.AnntName, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                                    @Html.TextBox("AnntName", (string)ViewBag.Anntaddemp, new { @class = "form-control", @readonly = "readonly" })
+
+                                    @Html.ValidationMessageFor(model => model.AnntName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AnntDay, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @*@Html.EditorFor(model => model.AnntDay, new { htmlAttributes = new { @class = "form-control" } })*@
+                                    @Html.TextBox("AnntDay", @DateTime.Now.ToString("yyyy/MM/dd"), new { @class = "form-control", @readonly = "readonly" })
+
+                                    @Html.ValidationMessageFor(model => model.AnntDay, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="新增" class="btn btn-success" />
+                                    @Html.ActionLink("返回", "Index", "Announcement", new { @class = "btn btn-info" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+@section scripts{
+    <script>
+        $(function () {
+            $("#demonewannouncement").click(function () {
+                $("#AnntTitle").val("年度員工健康檢查公告事項");
+                $("#AnntContent").val("體檢日期：1月 19日星期二，上午8時00分至12時00分上午參加體檢人員，請於前日晚上10點以後禁食，可喝少許白開水。" +
+                    "\n◆檢查前三天請盡量避免熬夜、喝酒，飲食請採清淡類食物。避免激烈運動、並保持充足睡眠。" +
+                    "\n◆檢查前三天請盡量避免熬夜、喝酒，飲食請採清淡類食物。避免激烈運動、並保持充足睡眠。"+
+                    "\n◆慢性病須長期服藥者，可繼續服藥(降血糖藥除外) ，其他非必須即時服用之藥物(感冒藥、止痛藥...等)請延後服用。"+
+                    "\n◆女性員工若遇生理期者，請告知醫護人員。"+
+                    "\n◆體檢當日請員工勿穿著有金屬物品(鈕釦、拉鍊、亮片)之衣物，勿戴項鍊。"+
+                    "\n◆懷孕者請勿照X光。"+
+                    "\n◆心電圖檢查員工請盡量穿著輕便兩截式服裝，勿穿著褲襪。"+
+                    "\n◆下腹部超音波檢查請保持脹尿，方便檢查時之清晰度。"+
+                    "\n◆當日抽完血，請按壓5 - 10分鐘，勿搓揉，如有瘀腫情形，24小時內可用冰敷舒緩。(勿用熱水或溫水沖敷)"+
+                    "\n◆收集尿液時，應取中段尿液。"+
+                    "\n◆請帶身份證正本以利完成報到手續。");
+            });
+        });
+
+    </script>
+    }
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

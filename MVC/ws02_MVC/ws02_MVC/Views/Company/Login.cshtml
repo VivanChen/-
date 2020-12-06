@@ -1,0 +1,132 @@
+﻿@model ws02_MVC.Models.Account2
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Login</title>
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="~/Content/css/sb-admin-2.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-info">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 " style="background-image:url(/img/m2-mb.png);background-repeat:no-repeat;">
+                                <img src="~/img/protekloginblack.png" width="450" style="padding-top:100px;padding-left:30px;" />
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4"><b> PROTEK</b></h1>
+                                        <input type="button" id="useradmin" value="管理部" class="btn btn-primary" />
+                                        <input type="button" id="userhr" value="人資部" class="btn btn-success" />
+                                        <input type="button" id="userprod" value="產品部" class="btn btn-info" />
+                                    </div>
+                                    <div class="user">
+
+
+                                        @using (Html.BeginForm())
+                                        {
+                                            @Html.AntiForgeryToken()
+
+
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-group">
+                                                @*@Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                                                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                                                @*<input type="text" id="employeeaccount" class="form-control form-control-user" placeholder="A0001"/>*@
+
+                                            </div>
+                                            <div class="form-group">
+                                                @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })*@
+
+                                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control form-control-user", @type = "password" } })
+                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                @*<input type="text" id="employeepassword" class="form-control form-control-user" />*@
+
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox small">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck" />
+                                                    <label class="custom-control-label" for="customCheck">記住我</label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit" value="登入" class="btn btn-primary btn-user btn-block" />
+                                                <hr />
+                                                @ViewBag.errormessage
+                                            </div>
+
+                                        }
+                                    </div>
+                                    <hr />
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">忘記密碼?</a>
+                                    </div>
+                                    @*<div class="text-center">
+                                        <a class="small" href="register.html">Create an Account!</a>
+                                    </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div>
+        @*@Html.ActionLink("Back to List", "Index")*@
+    </div>
+    <script src="~/Content/jquery/jquery.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Content/js/sb-admin-2.min.js"></script>
+    <script>
+        $(function () {
+            //demo按鈕
+            $("#useradmin").click(function () {
+                $("#Id").val("A0001");
+                $("#Password").val("1234");
+            });
+            $("#userhr").click(function () {
+                $("#Id").val("A0002");
+                $("#Password").val("1234");
+            });
+            $("#userprod").click(function () {
+                $("#Id").val("A0003");
+                $("#Password").val("1234");
+            });
+            //demo按鈕
+        });
+
+    </script>
+</body>
+</html>
